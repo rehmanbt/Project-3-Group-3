@@ -4,6 +4,8 @@
 # before running this script, install pandas using pip install pandas
 import csv
 import psycopg2
+import pandas as pd
+import json
 
 #
 # create a variable to hold the path to the input file
@@ -58,3 +60,14 @@ print("Total number of rows in table: ", cursor.rowcount)
 print("\nPrinting each row")
 for row in records:
     print("country", row[0], "country code", row[1], "year", row[2],"gdp", row[3])
+
+cursor.execute(sql_select_Query)
+table_rows = cursor.fetchall()
+df = pd.DataFrame(table_rows)
+df.columns = ['Country', 'Country_Code','Year', 'GDP']
+print(df.head)
+result = df.to_json(orient="records")
+parsed = json.loads(result)
+json_object = json.dumps(parsed, indent=4)
+with open("../Resource/gdp.json", "w") as outfile:
+    outfile.write(json_object)
