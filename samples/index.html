@@ -6,19 +6,33 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>GDP Sample</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    html,
+    body     { height    : 100%; padding: 0;   margin: 0;    }
+    div      { width     : 50%;  height : 50%; float : left; }
+    #div1    { background: #378aba; border-style: solid; border-width: 1px; border-color: black;}
+    #div2    { background: #2a597a; border-style: solid; border-width: 1px; border-color: black;}
+    #div3    { background: #2a597a; border-style: solid; border-width: 1px; border-color: black;}
+    #div4    { background: #378aba; border-style: solid; border-width: 1px; border-color: black;}
+    #div5    { background: #378aba; border-style: solid; border-width: 1px; border-color: black;}
+    #div6    { background: #2a597a; border-style: solid; border-width: 1px; border-color: black;}
+    table    { overflow: scroll;   display: block; height          : 100%; }
+    thead>tr { position: absolute; display: block; background-color: white; } 
+    tbody>tr:nth-of-type(1) { margin-top: 16px; }
+    tbody tr { display: block; }
+    td,
+    th { width: 70px; border-style: solid; border-width: 1px; border-color: black; background-color: lightslategrey;}
+  </style>
 </head>
 <body> 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script type="text/javascript" src="static/js/app.js"></script>
-  <BR>
-  <div>
-    <h1>GDP Graph</h1>
-  <div>
-    <div id="bar"></div>
-    <BR>
-    <BR>
-  </div>
-  </div>
+  <div id="div1"></div>
+  <div id="div2"></div>
+  <div id="div3"></div>
+  <div id="div4"></div>
+  <div id="div5"></div>
+  <div id="div6"></div>
 </body>
 </html>

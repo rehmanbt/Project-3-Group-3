@@ -54,8 +54,10 @@ d3.json(url).then (function(GDPdata) {
     }
     console.log('tabeData.length',tableData.length);
     console.log(tableData);
-    tabulate(tableData, ['Year', 'GDP']);
-    
+    tabulate('#div1',tableData, ['Year', 'GDP']);
+    tabulate('#div3',tableData, ['Year', 'GDP']);
+    tabulate('#div5',tableData, ['Year', 'GDP']);
+
     let barGraph = [{
       x           : countryTableYear,
       y           : countryTableGDP,
@@ -66,37 +68,26 @@ d3.json(url).then (function(GDPdata) {
       transforms  : [{ type : 'sort', target : 'y', order : 'descending'}],
       marker      : { color : colorGradient}}];
       let layout1 = { title        : "USA GDP"  , 
-                      plot_bgcolor :"Lightskyblue", 
-                      paper_bgcolor: "Lightskyblue", 
-                      width        : 500, 
-                      height       : 500,   };
-      Plotly.newPlot("bar"   ,    barGraph, layout1);
-      
-  
+                      plot_bgcolor : "Lightskyblue", 
+                      paper_bgcolor: "Lightskyblue"};
+      Plotly.newPlot("div2"   ,    barGraph, layout1);
+      Plotly.newPlot("div4"   ,    barGraph, layout1);
+      Plotly.newPlot("div6"   ,    barGraph, layout1);
 });
 
-function tabulate(data, columns) {
-      var table = d3.select('body').append('table')
+function tabulate(div,data, columns) {
+      var table = d3.select(div).append('table')
       var thead = table.append('thead')
-      var tbody = table.append('tbody')
-      .style('border', '1px solid #000000');;
+      var tbody = table.append('tbody').style('border', '1px solid #000000');;
   
       // append the header row
-      thead.append('tr')
-        .selectAll('th')
-        .data(columns).enter()
-        .append('th')
-          .text(function (column) { return column; });
+      thead.append('tr').selectAll('th').data(columns).enter().append('th').text(function (column) { return column; });
   
       // create a row for each object in the data
-      var rows = tbody.selectAll('tr')
-        .data(data)
-        .enter()
-        .append('tr');
+      var rows = tbody.selectAll('tr').data(data).enter().append('tr');
   
       // create a cell in each row for each column
-      var cells = rows.selectAll('td')
-        .data(function (row) {
+      var cells = rows.selectAll('td').data(function (row) {
           return columns.map(function (column) {
             return {column: column, value: row[column]};
           });
@@ -105,7 +96,6 @@ function tabulate(data, columns) {
         .append('td')
           .text(function (d) { return d.value; })
           .style('border', '1px solid #000000');
-        d3.selectAll('td').style('width', '100px');
         d3.selectAll('td').style('text-align', 'right');
     return table;
   }
