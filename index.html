@@ -1,20 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Bellybutton Biodiversity</title>
+  <title>World Facts</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+  <style>
+    html,
+    body     { height    : 100%; padding:   0; margin: 0;    }
+    div      { height    :  60%; float : left; }
+    
+    #divSpace1 { height    :  20%; width     : 100%; background: #378aba; }
 
-<body>
+    #div1      { width     :   1%; background: #378aba; }
+    #div2      { width     :  18%; background: #378aba; }
+    #div3      { width     :   1%; background: #378aba; }
+    #div4      { width     :  80%; background: #2a597a; }
+    
+    #divSpace2 { height    :  15%; Width     :   100%;background: #378aba; }
+
+    #div5      { width     :   1%; background: #378aba; }
+    #div6      { width     :  18%; background: #378aba; }
+    #div7      { width     :   1%; background: #378aba; }
+    #div8      { width     :  80%; background: #378aba; }
   
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+    #divSpace3 { height    :  10%; Width     : 100%; background: #378aba; }
+    #div9      { width     :   1%; background: #378aba; }
+    #div10     { width     :  18%; background: #378aba; }
+    #div11     { width     :   1%; background: #378aba; } 
+    #div12     { width     :  80%; background: #378aba; }
+ 
+    #divSpace4 { height    :  10%; Width     : 100%; background: #378aba; }
+    #div13     { width     :   1%; background: #378aba; }
+    #div14     { width     :  99%; background: #378aba; }
+   
+    #divSpace5 { height    :  10%; Width     : 100%; background: #378aba; }
+    #div18     { width     : 100%; background: #378aba; }
+   
+    #divSpace6 { height    :  10%; Width     : 100%; background: #378aba; }
+    table      { overflow: scroll;   display: block; height           : 100%; }
+    thead>tr   { position: absolute; display: block; background-color : white; } 
+    tbody>tr:nth-of-type(1) { margin-top: 22px; }
+    tbody tr   { display: block; }
+    td,
+    th { width: 140px; border-style: solid; border-width: 1px; border-color: whitesmoke; background-color: rgb(118, 176, 235);}
+  </style>
+</head>
+<body> 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="./static/js/app.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script type="text/javascript" src="static/js/wfCreateVisual.js"></script>
+  
+  <div id="divSpace1">
+    <H1>World Population Facts</H2>
+    <h2>World GDP</h1>
+    <label>Year (4 digits):</label>
+    <input type="number" id="yearGraph1" required minlength="4" maxlength="4" size="4" />
+    <button onclick="getYear()">OK</button>
+  </div>
+
+  <div id="div1"></div>
+  <div id="div2"></div>
+  <div id="div3"></div>
+  <div id="div4"></div>
+  
+  <div id="divSpace2">
+    <h2>Country GDP</h1>
+    <label>Country Code (3 characters):</label>
+    <input type="string" id="countryCodeGraph2" required minlength="3" maxlength="4" size="3" />
+    <button onclick="getCountryCode()">OK</button>
+  </div>
+  <div id="div5"></div>
+  <div id="div6"></div>
+  <div id="div7"></div>
+  <div id="div8"></div>
+  
+  <div id="divSpace3">
+    <h2>Country Birth Rate</h1>
+  </div>
+  <div id="div9"></div>
+  <div id="div10"></div>
+  <div id="div11"></div>
+  <div id="div12"></div>
+  
+  <div id="divSpace4">
+    <h2>Population by Age Range (Table Data)</h1>
+  </div>
+  <div id="div13"></div>
+  <div id="div14"></div>
+  
+  <div id="divSpace5">
+    <h1>Population by Age Range (Graph)</h1>
+  </div>
+  <div id="div18"></div>
 
 </body>
-
 </html>
