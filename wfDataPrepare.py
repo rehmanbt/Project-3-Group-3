@@ -5,31 +5,33 @@ import pandas as pd;
 import json;
 from   colorama import Fore;
 from   colorama import Style;
+import datetime;
 
 # create variables to hold the path to the input files
+beginTime = datetime.datetime.now();
 inputFileGDP = 'input/gdp-per-capita-penn-world-table.csv';
 inputFileBRT = 'input/crude-birth-rate.csv';
 inputFilePOP = 'input/population-and-demography.csv';
 
 print("");
-print(Fore.RED + "ALL - DATA PREPARATION======================");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.RED + " ALL - DATA PREPARATION======================");
 print("");
 
-print(Fore.RED + "PRE - DATABASE CONNECTION===================");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.RED + " PRE - DATABASE CONNECTION===================");
 # Connect to the database
 conn = psycopg2.connect(database="worldfacts",
 						user='postgres', password='top2gun6',
 						host='127.0.0.1', port='5432');
 conn.autocommit = True;
 cursor          = conn.cursor();
-print(Fore.RED  + "PRE - DATABASE CONNECTION================" + Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL+ Fore.RED + "=");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.RED  + " PRE - DATABASE CONNECTION================" + Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL+ Fore.RED + "=");
 print("")
 
-print(Fore.RED + "ALL - DATABASE LOAD BLOCK===================");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.RED + " ALL - DATABASE LOAD BLOCK===================");
 print("")
 
 # open he GDP file for reading and insert into the table
-print(Fore.BLUE + "GDP - DATABASE LOAD-------------------------");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.BLUE + " GDP - DATABASE LOAD-------------------------");
 with open(inputFileGDP, 'r') as file:
     truncateCommand = "TRUNCATE TABLE GDP";
     cursor.execute(truncateCommand);
@@ -46,12 +48,12 @@ with open(inputFileGDP, 'r') as file:
                 cursor.execute(insertCommand);
                 insertRecordCount += 1;
         readRecordCount += 1; 
-    print(Fore.BLUE + 'GDP - READ - Total number of records: ', readRecordCount);
-    print(Fore.BLUE + 'GDP - INSR - Total number of records: ', insertRecordCount);
-    print(Fore.BLUE + "GDP - DATABASE LOAD----------------------" + Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL + Fore.BLUE + "-");
+    print(Fore.WHITE + str(datetime.datetime.now()) + Fore.BLUE + ' GDP - READ - Total number of records: ', readRecordCount);
+    print(Fore.WHITE + str(datetime.datetime.now()) + Fore.BLUE + ' GDP - INSR - Total number of records: ', insertRecordCount);
+    print(Fore.WHITE + str(datetime.datetime.now()) + Fore.BLUE + " GDP - DATABASE LOAD----------------------" + Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL + Fore.BLUE + "-");
     print("");
 # open he BIRTH RATE file for reading and insert into the table
-print(Fore.CYAN + "BRT - DATABASE LOAD-------------------------");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.CYAN + " BRT - DATABASE LOAD-------------------------");
 with open(inputFileBRT, 'r') as file:
     truncateCommand = "TRUNCATE TABLE BIRTH_RATE";
     cursor.execute(truncateCommand);
@@ -69,13 +71,13 @@ with open(inputFileBRT, 'r') as file:
                 cursor.execute(insertCommand);
                 insertRecordCount += 1;
         readRecordCount += 1;
-    print('BRT - READ - Total number of records: ', readRecordCount);
-    print('BRT - INSR - Total number of records: ', insertRecordCount);
-    print(Fore.CYAN + "BRT - DATABASE LOAD----------------------" + Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL + Fore.CYAN + "-");
+    print(Fore.WHITE + str(datetime.datetime.now()) + Fore.CYAN + ' BRT - READ - Total number of records: ', readRecordCount);
+    print(Fore.WHITE + str(datetime.datetime.now()) + Fore.CYAN + ' BRT - INSR - Total number of records: ', insertRecordCount);
+    print(Fore.WHITE + str(datetime.datetime.now()) + Fore.CYAN + ' BRT - DATABASE LOAD----------------------' + Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL + Fore.CYAN + "-");
     print("");
     
 # open he POPULATION file for reading and insert into the table
-print(Fore.MAGENTA + "POP - DATABASE LOAD-------------------------");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.MAGENTA + " POP - DATABASE LOAD-------------------------");
 with open(inputFilePOP, 'r') as file:
     truncateCommand = "TRUNCATE TABLE POPULATION";
     cursor.execute(truncateCommand);
@@ -138,24 +140,24 @@ with open(inputFilePOP, 'r') as file:
                 cursor.execute(insertCommand);
                 insertRecordCount += 1;
         readRecordCount += 1;
-    print('POP - READ - Total number of records: ', readRecordCount);
-    print('POP - INSR - Total number of records: ', insertRecordCount);
-    print(Fore.MAGENTA + "POP - DATABASE LOAD----------------------" + Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL + Fore.MAGENTA + "-");
+    print(Fore.WHITE + str(datetime.datetime.now()) + Fore.MAGENTA + ' POP - READ - Total number of records: ', readRecordCount);
+    print(Fore.WHITE + str(datetime.datetime.now()) + Fore.MAGENTA + ' POP - INSR - Total number of records: ', insertRecordCount);
+    print(Fore.WHITE + str(datetime.datetime.now()) + Fore.MAGENTA + " POP - DATABASE LOAD----------------------" + Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL + Fore.MAGENTA + "-");
     print("");
     
-print(Fore.RED     + "ALL - DATABASE LOAD BLOCK================" + Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL + Fore.MAGENTA + "=");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.RED  + " ALL - DATABASE LOAD BLOCK================" + Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL + Fore.MAGENTA + "=");
 print("");
 
-print(Fore.RED  + "ALL - JSON LOAD BLOCK======================");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.RED  + " ALL - JSON LOAD BLOCK=======================");
 print("")
 # reading the data from the GDP table and preparing the json file
-print(Fore.BLUE + "GDP - JSON LOAD-----------------------------");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.BLUE + " GDP - JSON LOAD-----------------------------");
 sql_select_Query = "select * from gdp";
 cursor = conn.cursor();
 cursor.execute(sql_select_Query);
 # get all records
 records = cursor.fetchall();
-print("GDP - READ - JSON preparation       : ", cursor.rowcount);
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.BLUE +" GDP - READ - JSON preparation       : ", cursor.rowcount);
 cursor.execute(sql_select_Query);
 table_rows = cursor.fetchall();
 df = pd.DataFrame(table_rows);
@@ -167,18 +169,18 @@ with open("Resource/gdp.json", "w") as outfile:
     outfile.write(json_object);
 with open("Resource/gdp.json", encoding='utf8') as JSONFile:
     data = json.load(JSONFile);
-print("GDP - CHK  - JSON preparation       : ", len(data));
-print(Fore.BLUE + "GDP - JSON LOAD--------------------------" + Fore.GREEN + Style.BRIGHT + "OK-" + Fore.RESET + Style.RESET_ALL);
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.BLUE + " GDP - CHK  - JSON preparation       : ", len(data));
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.BLUE + " GDP - JSON LOAD--------------------------" + Fore.GREEN + Style.BRIGHT + "OK-" + Fore.RESET + Style.RESET_ALL);
 print("");
 
 # reading the data from the Birth_Rate table and preparing the json file
-print(Fore.CYAN + "BRT - JSON LOAD-----------------------------");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.CYAN + " BRT - JSON LOAD-----------------------------");
 sql_select_Query = "select * from birth_rate";
 cursor = conn.cursor();
 cursor.execute(sql_select_Query);
 # get all records
 records = cursor.fetchall();
-print("BRT - READ - JSON preparation       : ", cursor.rowcount);
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.CYAN + " BRT - READ - JSON preparation       : ", cursor.rowcount);
 cursor.execute(sql_select_Query);
 table_rows = cursor.fetchall();
 df = pd.DataFrame(table_rows);
@@ -190,19 +192,19 @@ with open("Resource/birth_rate.json", "w") as outfile:
     outfile.write(json_object);
 with open("Resource/birth_rate.json", encoding='utf8') as JSONFile:
     data = json.load(JSONFile);
-print("BRT - CHK  - JSON preparation       : ", len(data));
-print(Fore.CYAN + "BRT - JSON LOAD--------------------------"+ Fore.GREEN + Style.BRIGHT + "OK-" + Fore.RESET + Style.RESET_ALL);
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.CYAN + " BRT - CHK  - JSON preparation       : ", len(data));
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.CYAN + " BRT - JSON LOAD--------------------------"+ Fore.GREEN + Style.BRIGHT + "OK-" + Fore.RESET + Style.RESET_ALL);
 print("");
 
 # reading the data from the population table and preparing the json file
-print(Fore.MAGENTA + "POP - JSON LOAD-----------------------------");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.MAGENTA + " POP - JSON LOAD-----------------------------");
 
 sql_select_Query = "select * from population";
 cursor = conn.cursor();
 cursor.execute(sql_select_Query);
 # get all records
 records = cursor.fetchall();
-print("POP - READ - JSON preparation       : ", cursor.rowcount);
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.MAGENTA + " POP - READ - JSON preparation       : ", cursor.rowcount);
 cursor.execute(sql_select_Query);
 table_rows = cursor.fetchall();
 df = pd.DataFrame(table_rows);
@@ -216,9 +218,18 @@ with open("Resource/population.json", "w") as outfile:
     outfile.write(json_object);
 with open("Resource/population.json", encoding='utf8') as JSONFile:
     data = json.load(JSONFile);
-print("POP - CHK  - JSON preparation       : ", len(data));
-print(Fore.MAGENTA + "POP - JSON LOAD--------------------------" + Fore.GREEN + Style.BRIGHT + "OK-" + Fore.RESET + Style.RESET_ALL);
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.MAGENTA + " POP - CHK  - JSON preparation       : ", len(data));
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.MAGENTA + " POP - JSON LOAD--------------------------" + Fore.GREEN + Style.BRIGHT + "OK-" + Fore.RESET + Style.RESET_ALL);
 print("");
-print(Fore.RED  + "ALL - JSON LOAD BLOCK===================="+ Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL + Fore.RED + "=");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.RED  + " ALL - JSON LOAD BLOCK===================="+ Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL + Fore.RED + "=");
 print("");
-print(Fore.RED  + "ALL - DATA IS READY======================"+ Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL + Fore.RED + "=");
+print(Fore.WHITE + str(datetime.datetime.now()) + Fore.RED  + " ALL - DATA IS READY======================"+ Fore.GREEN + Style.BRIGHT + "OK" + Fore.RESET + Style.RESET_ALL + Fore.RED + "=");
+endTime = datetime.datetime.now();
+print("");
+print(Fore.WHITE + "EXECUTION STATS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+print("");
+print(Fore.WHITE + str(beginTime)           + ' BEGIN TIME');
+print(Fore.WHITE + str(endTime)             + ' END TIME');
+print("")
+print(Fore.WHITE + f"{(endTime - beginTime).total_seconds()} ELAPSED TIME IN SECONDS");
+print(Fore.WHITE + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
