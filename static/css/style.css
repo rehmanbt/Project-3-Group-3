@@ -1,0 +1,143 @@
+/* Reset default margin and padding for the entire page */
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* Basic styling for all div elements */
+div {
+    height: 60%;
+    float: left;
+}
+
+/* Styling for the first set of div elements */
+#divSpace1 {
+    height: 20%;
+    width: 100%;
+    background: #378aba;
+}
+
+#div1, #div3 {
+    width: 1%;
+    background: #378aba;
+}
+
+#div2 {
+    width: 18%;
+    background: #378aba;
+}
+
+#div4 {
+    width: 80%;
+    background: #2a597a;
+}
+
+/* Styling for the second set of div elements */
+#divSpace2 {
+    height: 15%;
+    width: 100%;
+    background: #378aba;
+}
+
+#div5, #div7 {
+    width: 1%;
+    background: #378aba;
+}
+
+#div6 {
+    width: 18%;
+    background: #378aba;
+}
+
+#div8 {
+    width: 80%;
+    background: #378aba;
+}
+
+/* Styling for the third set of div elements */
+#divSpace3 {
+    height: 10%;
+    width: 100%;
+    background: #378aba;
+}
+
+#div9, #div11 {
+    width: 1%;
+    background: #378aba;
+}
+
+#div10 {
+    width: 18%;
+    background: #378aba;
+}
+
+#div12 {
+    width: 80%;
+    background: #378aba;
+}
+
+/* Styling for the fourth set of div elements */
+#divSpace4 {
+    height: 10%;
+    width: 100%;
+    background: #378aba;
+}
+
+#div13 {
+    width: 1%;
+    background: #378aba;
+}
+
+#div14 {
+    width: 99%;
+    background: #378aba;
+}
+
+/* Styling for the fifth set of div elements */
+#divSpace5 {
+    height: 10%;
+    width: 100%;
+    background: #378aba;
+}
+
+#div18 {
+    width: 100%;
+    background: #378aba;
+}
+
+/* Styling for the sixth set of div elements */
+#divSpace6 {
+    height: 10%;
+    width: 100%;
+    background: #378aba;
+}
+
+/* Styling for table, thead, tbody, td, and th elements */
+table {
+    overflow: scroll;
+    display: block;
+    height: 100%;
+}
+
+thead>tr {
+    position: absolute;
+    display: block;
+    background-color: white;
+}
+
+tbody>tr:nth-of-type(1) {
+    margin-top: 22px;
+}
+
+tbody tr {
+    display: block;
+}
+
+td, th {
+    width: 140px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: whitesmoke;
+    background-color: rgb(118, 176, 235);
+}
