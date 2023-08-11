@@ -6,10 +6,9 @@
 Project Technology
 ### Technically the project is composed of 3 parts:
 
-A program that deals with the ETL, taking CSV files, checking, cleaning, formatting and storing the data in a Relational Database (Postgres) for posterior utilization (visualization, reports, on demand queries, verifications, etc.). This program also prepares the data to be easily consumed by a web page, in JSON format.
-A JavaScript that  reads the JSON files and prepares Data Tables and Graphs for the 3 aspect of our research (World GDP over time, Country GDP over time and Population Age Ranges over time).
-A HTML page that hold the visualization rendering (Tables and Graphs).
-CSS is also used in the HTML page.
+- A program that deals with the ETL, taking CSV files, checking, cleaning, formatting and storing the data in a Relational Database (Postgres) for posterior utilization (visualization, reports, on demand queries, verifications, etc.). This program also prepares the data to be easily consumed by a web page, in JSON format.
+- A JavaScript that  reads the JSON files and prepares Data Tables and Graphs for the 3 aspect of our research (World GDP over time, Country GDP over time and Population Age Ranges over time).
+- A HTML page that hold the visualization rendering (Tables and Graphs). CSS is also used in the HTML page.
 
 ### Project Technical Components
 
