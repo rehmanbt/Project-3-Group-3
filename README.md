@@ -14,19 +14,20 @@ CSS is also used in the HTML page.
 ### Project Technical Components
 
 1 Python Program, using libraries:
-csv
-pd
-Json
-Psycopg2 (Never used before in the Bootcamp) – used for Database access
-colorama (Never used before in the Bootcamp) – used for rich colored print output.
+
+- csv
+- pd
+- Json
+- Psycopg2 (Never used before in the Bootcamp) – used for Database access
+- colorama (Never used before in the Bootcamp) – used for rich colored print output.
 
 1 JavaScript program, using libraries:
 
-D3.js
-Plotly.js
+- D3.js
+- Plotly.js
 
-1 HTML page
-1 CSS file
+- 1 HTML page
+- 1 CSS file
 
 The chosen database is Postgres.
 
